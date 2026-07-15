@@ -212,6 +212,34 @@ window.addEventListener("scroll", () => {
             link.classList.add("active");
 
         }
+   const contactForm = document.querySelector('form');
+
+contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault(); // Stop the default page redirect
+
+    // Gather form data dynamically
+    const formData = new FormData(contactForm);
+
+    try {
+        const response = await fetch(contactForm.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+
+        if (response.ok) {
+            alert('Thank you! Your message has been sent successfully.');
+            contactForm.reset(); // Clear all fields after successful submit
+        } else {
+            const data = await response.json();
+            alert('Oops! There was a problem: ' + (data.errors ? data.errors.map(error => error.message).join(', ') : 'Submission failed'));
+        }
+    } catch (error) {
+        alert('Oops! There was a network error trying to send your message.');
+    }
+});
 
     });
 
