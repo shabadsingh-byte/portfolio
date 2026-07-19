@@ -402,12 +402,24 @@ section {
     padding: 40px;
     border-radius: var(--radius-md);
     box-shadow: 0 15px 40px rgba(0,0,0,0.04);
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    
+    /* Change flex to grid layout */
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Creates a 2-column layout */
+    gap: 20px; /* Uniform spacing between all fields */
+    text-align: left;
 }
 
-.contact-form input, .contact-form textarea {
+/* Make sure the subject, message textarea, and submit button stretch full width across both columns */
+.contact-form input[name="subject"], 
+.contact-form textarea, 
+.contact-form .primary-btn {
+    grid-column: span 2;
+}
+
+/* Standardize the field styles so they behave predictably */
+.contact-form input, 
+.contact-form textarea {
     width: 100%;
     padding: 14px 18px;
     border: 1px solid var(--border-color);
@@ -417,8 +429,8 @@ section {
     color: var(--text-main);
     transition: var(--transition);
     outline: none;
+    box-sizing: border-box; /* Prevents padding from blowing up element width */
 }
-
 /* Highlighting modern border animation on focus */
 .contact-form input:focus, .contact-form textarea:focus {
     border-color: var(--primary-color);
