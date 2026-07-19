@@ -160,7 +160,7 @@ section {
 }
 
 .section-title p {
-    color: var(--bg-light);
+    color: var(--text-main);
     font-size: 1.1rem;
 }
 
@@ -229,7 +229,7 @@ section {
 
 .hero h2 {
     font-size: 2rem;
-    color: var(--primary-main);
+    color: var(--primary-color);
     margin-bottom: 20px;
 }
 
