@@ -229,7 +229,7 @@ section {
 
 .hero h2 {
     font-size: 2rem;
-    color: var(--bg-light);
+    color: var(--primary-main);
     margin-bottom: 20px;
 }
 
